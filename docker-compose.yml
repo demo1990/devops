@@ -1,9 +1,18 @@
-mysql:
-  image: mysql:5.7
-  ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_ROOT_PASSWORD=petclinic
-    - MYSQL_DATABASE=petclinic
-  volumes:
+version: '2.2'  
+services: 
+ 
+ petclinic: 
+   image: 323388337175.dkr.ecr.eu-central-1.amazonaws.com/petclinic1:v1 
+   build: 
+     context: . 
+     dockerfile: Dockerfile.txt 
+ 
+ mysql:   
+  image: mysql:5.7   
+  ports:   
+    - "3306:3306"   
+  environment:   
+    - MYSQL_ROOT_PASSWORD=petclinic   
+    - MYSQL_DATABASE=petclinic   
+  volumes:   
     - "./conf.d:/etc/mysql/conf.d:ro"
